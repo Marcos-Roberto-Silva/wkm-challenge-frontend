@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { ImportContext } from '../contexts/Context';
 import { GetStaticProps } from 'next';
 import { api } from '../services/api'
-import axios from 'axios';
 
 type State = {
   name: string;
