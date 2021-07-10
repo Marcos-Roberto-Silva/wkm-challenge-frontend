@@ -72,9 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const { data } = await api.get('states');
 
   return { 
-    props: {
-      states: data,
-    },
+    props: { states: data },
     revalidate: 60 * 60 * 8,
   }
 }
