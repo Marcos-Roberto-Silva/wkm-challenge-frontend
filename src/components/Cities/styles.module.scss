@@ -13,10 +13,6 @@
         height: 30px;
     }
 
-    // &.isActive {
-    //     filter: invert(0.35) sepia(1) saturation(3) hue-rotate(100deg)
-    // }
-
     // &.isActive:hover {
     //     filter: invert(0.35) sepia(1) saturation(3) hue-rotate(100deg)
     // }
@@ -45,6 +41,10 @@
     p {
         color: red;
         margin: 5px;
+
+        &.isActive {
+            color: green;
+        }
     }
 }
 
@@ -57,4 +57,8 @@
 .selectInput {
     width: 12rem;
     margin-left: .1rem;;
+}
+
+.buttons {
+    display: flex;
 }

@@ -59,11 +59,12 @@ export function CitiesComponent({ states }) {
           <input
             type="text"
             placeholder="Cep"
+            maxLength={25}
             onChange={(e) => setCep(e.target.value)}
           />
           <div>
             {getCityResponse ? (
-              <p className={styles.isActive}>{getCityResponse?.message}</p>
+              <p className={!getCityResponse.status? '' : styles.isActive}>{getCityResponse?.message}</p>
             ) : null}
           </div>
 
@@ -79,11 +80,11 @@ export function CitiesComponent({ states }) {
               </option>
             ))}
           </select>
-          <div>
+          <div className={styles.buttons}>
+            <button>Salvar</button>
             <Link href="/states">
               <button>Cadastrar estados</button>
             </Link>
-            <button>Salvar</button>
           </div>
         </div>
       </form>
