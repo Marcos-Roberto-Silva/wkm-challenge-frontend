@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/link-passhref */
 import React from "react";
 import { ImportContext } from "../contexts/Context";
 import { GetStaticProps } from "next";
 import { api } from "../services/api";
+import Link from 'next/link';
 
 type State = {
   name: string;
@@ -37,9 +39,11 @@ export default function Home(props: HomeProps) {
     cep: postalCode,
     setCep,
   } = ImportContext();
-  const { fetchResponse, setFetchResponse } = ImportContext();
+  const { getCityResponse, setGetCityResponse, } = ImportContext();
   const { states } = props;
 
+  console.log(getCityResponse);
+  
   const HandleSubmit = async (e: Event) => {
     e.preventDefault();
     const cep = parseInt(postalCode);
@@ -49,11 +53,11 @@ export default function Home(props: HomeProps) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
+    
     const responseFetch = await result.json();
-    setFetchResponse(responseFetch);
-    console.log(responseFetch);
+    setGetCityResponse(responseFetch);
   };
-
+  
   return (
     <div>
       <form onSubmit={HandleSubmit}>
@@ -73,15 +77,21 @@ export default function Home(props: HomeProps) {
         </div>
         <div>
           <select value={uf} onChange={(e) => setState(e.target.value)}>
-            {states.map((state) => (
-              <option key={state.uf} value={state.uf}>
-                {state.uf}
-              </option>
-            ))}
+          <option defaultValue="Estados">Estados</option>
+            {
+              states.map((state) => (
+                <option key={state.uf} value={state.uf}>
+                  {state.uf}
+                </option>
+              ))
+            }
           </select>
         </div>
       </form>
-      {fetchResponse !== "object" ? <p>{fetchResponse?.message}</p> : null}
+      {getCityResponse !== {} ? <p>{getCityResponse?.message}</p> : null}
+      <Link href="/states" >
+        <button>Cadastrar estados</button>
+      </Link>
     </div>
   );
 }
