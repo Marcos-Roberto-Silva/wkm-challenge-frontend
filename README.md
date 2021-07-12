@@ -6,7 +6,7 @@
 
 #### Em um terminakl navegue até o diretório onde a aplicação está.
 
-#### Para instalar as dependências execute o comando a baixo.
+#### Para instalar as dependências execute o comando abaixo.
 
      `yarn install`
 #### No navegador de sua preferência acesse a rota `http://localhost:3000/`
