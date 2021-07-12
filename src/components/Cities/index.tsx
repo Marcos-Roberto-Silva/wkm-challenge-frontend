@@ -2,7 +2,7 @@
 import React from "react";
 import { ImportContext } from "../../contexts/Context";
 import Link from "next/link";
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -45,7 +45,7 @@ export function CitiesComponent({ states }) {
     setGetCityResponse(responseFetch);
   };
   console.log(getCityResponse);
-  
+
   return (
     <div className={styles.headerContainer}>
       <form onSubmit={HandleSubmit}>
@@ -61,11 +61,17 @@ export function CitiesComponent({ states }) {
             placeholder="Cep"
             onChange={(e) => setCep(e.target.value)}
           />
-           <div>
-        {getCityResponse ? <p>{getCityResponse?.message}</p> : null}
-      </div>
-       
-          <select className={styles.selectInput} value={uf} onChange={(e) => setState(e.target.value)}>
+          <div>
+            {getCityResponse ? (
+              <p className={styles.isActive}>{getCityResponse?.message}</p>
+            ) : null}
+          </div>
+
+          <select
+            className={styles.selectInput}
+            value={uf}
+            onChange={(e) => setState(e.target.value)}
+          >
             <option defaultValue="Estado">Estado</option>
             {states.map((state: { uf: {} }) => (
               <option key={state.uf.toString()} value={state.uf.toString()}>
@@ -73,14 +79,14 @@ export function CitiesComponent({ states }) {
               </option>
             ))}
           </select>
-          <button>Salvar</button>
-          <Link href="/states">
-            <button>Cadastrar estados</button>
-          </Link>
+          <div>
+            <Link href="/states">
+              <button>Cadastrar estados</button>
+            </Link>
+            <button>Salvar</button>
+          </div>
         </div>
-
       </form>
-
     </div>
   );
 }

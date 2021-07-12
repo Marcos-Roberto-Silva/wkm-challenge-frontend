@@ -13,10 +13,19 @@
         height: 30px;
     }
 
+    // &.isActive {
+    //     filter: invert(0.35) sepia(1) saturation(3) hue-rotate(100deg)
+    // }
+
+    // &.isActive:hover {
+    //     filter: invert(0.35) sepia(1) saturation(3) hue-rotate(100deg)
+    // }
+
     input {
         border-radius: 5px;
         margin: .2rem;
         height: 30px;
+        padding: 4px;
     }
 
     button {
@@ -26,6 +35,11 @@
         margin: 5px;
         background: rgb(38, 147, 219);
         color: white;
+
+        &:hover{
+          filter: brightness(0.95);
+          box-shadow: black;
+        }
     }
 
     p {
