@@ -1,4 +1,5 @@
 .headerContainer {
+    border: 1px solid rgba(0, 0, 0, 0.192);
     margin-top: 5rem;
     width: 50%;
     background: var(--white);
@@ -31,6 +32,10 @@
     p {
         color: red;
         margin: 5px;
+
+        &.isActive {
+            color: green;
+        }
     }
 }
 

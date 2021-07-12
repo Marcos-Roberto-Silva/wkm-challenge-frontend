@@ -44,7 +44,10 @@ export function CitiesComponent({ states }) {
     const responseFetch = await result.json();
     setGetCityResponse(responseFetch);
   };
-  console.log(getCityResponse);
+ 
+  const clearField = () => {    
+    setGetCityResponse('');
+  }
 
   return (
     <div className={styles.headerContainer}>
@@ -54,17 +57,21 @@ export function CitiesComponent({ states }) {
             type="text"
             name="ufState"
             placeholder="Cidade"
+            required
             onChange={(e) => setCity(e.target.value)}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Cep"
+            maxLength={25}
+            required
             onChange={(e) => setCep(e.target.value)}
           />
           <div>
-            {getCityResponse ? (
-              <p className={styles.isActive}>{getCityResponse?.message}</p>
-            ) : null}
+            { getCityResponse ? (
+              <p className={ !getCityResponse.status? '' : styles.isActive }>{ getCityResponse.message }</p>
+            ) : null 
+            }
           </div>
 
           <select
@@ -79,11 +86,11 @@ export function CitiesComponent({ states }) {
               </option>
             ))}
           </select>
-          <div>
-            <Link href="/states">
-              <button>Cadastrar estados</button>
-            </Link>
+          <div className={styles.buttons}>
             <button>Salvar</button>
+            <Link href="/states">
+              <button onClick={() => clearField()}>Cadastrar Estado</button>
+            </Link>
           </div>
         </div>
       </form>

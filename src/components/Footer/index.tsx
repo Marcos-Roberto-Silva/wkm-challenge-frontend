@@ -1,9 +1,8 @@
+import React from 'react';
 import styles from "./styles.module.scss";
 
-export function Footer() {
-  return (
-    <footer className={styles.headerContainer}>
-      <h2>Feito com amor.</h2>
-    </footer>
-  );
-}
+export const Footer = () => (
+  <div className={styles.headerContainer}>
+    Created with ❤
+  </div>
+);
