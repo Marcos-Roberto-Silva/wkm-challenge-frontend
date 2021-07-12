@@ -1,0 +1,40 @@
+.headerContainer {
+    margin-top: 5rem;
+    width: 50%;
+    background: var(--white);
+    display: flex;
+    flex-flow: column;
+    margin-left: 5rem;
+    padding: 4rem;
+
+    input {
+        border-radius: 5px;
+        margin: .2rem;
+        height: 30px;
+    }
+
+    button {
+        border-radius: 5px;
+        width: 12rem;
+        height: 30px;
+        margin: 5px;
+        background: rgb(38, 147, 219);
+        color: white;
+    }
+
+    p {
+        color: red;
+        margin: 5px;
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+}
+
+.selectInput {
+    width: 12rem;
+    margin-left: .1rem;;
+}

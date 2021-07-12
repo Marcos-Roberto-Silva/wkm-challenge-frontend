@@ -1,79 +1,10 @@
-/* eslint-disable @next/next/link-passhref */
-import Link from 'next/link';
-import { ImportContext } from "../contexts/Context";
-import { api } from "../services/api";
+import React from 'react';
+import { StatesComponent } from '../components/States';
 
-type State = {
-    name: string;
-    uf: string;
-  };
-  
-  type Props = {
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  };
-  
-  type Event = {
-    preventDefault: () => void;
-  };
-  
-  type HomeProps = {
-    states: State[];
-  };
-  
-  interface SampleFormData {
-    username: string;
-  }
-  
-  interface SampleFormProps {
-    saveData: (data: SampleFormData) => void;
-  }
-
-export default function States() {
-  const { state: name, setState, uf, setUf } = ImportContext();
-  const { getStateResponse, setGetStateResponse } = ImportContext();
-
-  console.log('Aqui', getStateResponse);
-  
-  const HandleSubmit = async (e: Event) => {
-    e.preventDefault();
-  
-    const payload = { name, uf };
-    
-    const result = await fetch("http://localhost:3001/states", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-        const getErrorFromApi = await result.json();
-        setGetStateResponse(getErrorFromApi);
-  };
-
-  return (
-    <div>
-      <form onSubmit={HandleSubmit}>
-        <div>
-          <input
-            type="text"
-            name="ufState"
-            placeholder="Nome do Estado"
-            onChange={(e) => setState(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="UF"
-            maxLength={2}
-            onChange={(e) => setUf(e.target.value.toUpperCase())}
-          />
-          <button>Salvar</button>
-        </div>
-        <div>
-        </div>
-        { <p>{getStateResponse?.message}</p> }
-      </form>
-      <Link href="/" >
-        <button>Cadastrar cidades</button>
-      </Link>
-    </div>
-  );
+export default function State() {
+    return (
+        <React.Fragment>
+          <StatesComponent />
+        </React.Fragment>
+    )
 }

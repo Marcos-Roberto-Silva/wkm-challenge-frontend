@@ -11,7 +11,7 @@ export function Header() {
     return (
         <header className={styles.headerContainer}>
             <Image src="/wkm.png" width={200} height={50} alt="logo-wkm" />
-            <p> O melhor para você, sempre</p>
+            <p> O melhor para você, sempre.</p>
             <span>{currentDate}</span>
         </header>
     );

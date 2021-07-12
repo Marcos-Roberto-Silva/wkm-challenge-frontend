@@ -1,4 +1,3 @@
-import { Cities } from '../components/Cities';
 import { Header } from '../components/Header';
 import styles from "../styles/app.module.scss";
 import "../styles/global.scss";
