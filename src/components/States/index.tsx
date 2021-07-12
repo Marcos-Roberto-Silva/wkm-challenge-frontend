@@ -34,6 +34,10 @@ export function StatesComponent() {
 
   console.log("Aqui", getStateResponse);
 
+  const clearField = () => {    
+    setGetStateResponse('');
+  }
+
   const HandleSubmit = async (e: Event) => {
     e.preventDefault();
 
@@ -57,20 +61,29 @@ export function StatesComponent() {
             type="text"
             name="ufState"
             placeholder="Nome do Estado"
+            required
             onChange={(e) => setState(e.target.value)}
           />
           <input
             type="text"
             placeholder="UF"
             maxLength={2}
+            required
             onChange={(e) => setUf(e.target.value.toUpperCase())}
           />
         </div>
-        {<p>{getStateResponse?.message}</p>}
-        <Link href="/">
-          <button>Cadastrar cidades</button>
-        </Link>
+        
+        <div className="errorSuccessMessage">
+            { getStateResponse ? (
+              <p className={ !getStateResponse.status? null : styles.isActive }>{ getStateResponse?.message }</p>
+            ) : null 
+            }
+          </div>
+
         <button>Salvar</button>
+        <Link href="/">
+          <button onClick={() => clearField()}>Cadastrar Cidade</button>
+        </Link>
       </form>
     </div>
   );
