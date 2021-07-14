@@ -4,6 +4,11 @@ import { ImportContext } from "../../contexts/Context";
 import Link from "next/link";
 import styles from "./styles.module.scss";
 
+type State = {
+  name: string;
+  uf: string;
+}
+
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -90,6 +95,9 @@ export function CitiesComponent({ states }) {
             <button>Salvar</button>
             <Link href="/states">
               <button onClick={() => clearField()}>Cadastrar Estado</button>
+            </Link>
+            <Link href="/cities">
+              <button>Listar Cidades</button>
             </Link>
           </div>
         </div>

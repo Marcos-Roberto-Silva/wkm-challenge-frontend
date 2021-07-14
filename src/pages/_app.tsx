@@ -11,12 +11,11 @@ function MyApp({ Component, pageProps }) {
           <main>
             <Header />
             <Component {...pageProps} />
-          </main>
-           
+          </main>    
       </div>
       <Footer />
     </ContextProvider>
-  ) 
+  )
 }
 
 export default MyApp
