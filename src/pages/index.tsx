@@ -2,7 +2,7 @@
 import React from "react";
 import { GetStaticProps } from "next";
 import { api } from "../services/api";
-import { CitiesComponent } from '../components/Cities';
+import { CitiesComponent } from "../components/Cities";
 
 type State = {
   name: string;
@@ -14,9 +14,9 @@ type HomeProps = {
 };
 
 export default function Home(props: HomeProps) {
-  
+
   const { states } = props;
-  
+
   return (
     <div>
       <CitiesComponent states={states} />
@@ -25,8 +25,8 @@ export default function Home(props: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get("states");
-  
+  const { data } = await api.get('states');
+
   return {
     props: { states: data },
     revalidate: 60 * 60 * 8,

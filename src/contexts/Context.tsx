@@ -5,6 +5,7 @@ type ContextData = {
   setCity: (city: string) => void;
   setCep: (cep: string) => void;
   setUf:(uf: string) => void;
+  setGetCep:(getCep: number) => void;
   setGetCityResponse: (getCityResponse: any) => void;
   setGetStateResponse:(getStateResponse: any) => void;
   
@@ -12,6 +13,7 @@ type ContextData = {
   uf: string;
   city: string;
   cep: string;
+  getCep: number;
   getCityResponse: any;
   getStateResponse: any;
 };
@@ -26,7 +28,8 @@ export function ContextProvider({ children }: ContextProvider) {
 const [state, setState] = useState('');
 const [uf, setUf] = useState('');
 const [city, setCity] = useState('');
-const [cep, setCep] = useState('');
+const [cep, setCep] = useState();
+const [getCep, setGetCep] = useState(0);
 const [getCityResponse, setGetCityResponse] = useState();
 const [getStateResponse, setGetStateResponse] = useState();
 
@@ -39,6 +42,8 @@ const context = {
   setCity,
   cep,
   setCep,
+  getCep, 
+  setGetCep,
   getCityResponse, 
   setGetCityResponse,
   getStateResponse,
