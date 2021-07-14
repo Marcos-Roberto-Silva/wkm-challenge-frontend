@@ -23,14 +23,13 @@ export default function Cities(props: HomeProps) {
   const { setGetCityResponse } = ImportContext();
 
   async function removeItemGrid(cep: number) {
-    
     await api.delete(`cities/${cep}`);
     const row = document.getElementsByClassName(`.${cep}`)[0];
     row.remove();
   }
 
   function clearField() {
-    setGetCityResponse('');
+    setGetCityResponse("");
   }
 
   return (
@@ -55,16 +54,29 @@ export default function Cities(props: HomeProps) {
                   <td>{city.cep}</td>
                   <td>{city.uf}</td>
                   <td>
-                    <button onClick={() => removeItemGrid(city.cep)}>remover</button>
+                    <Image
+                      src="/delete.png"
+                      onClick={() => removeItemGrid(city.cep)}
+                      width={0}
+                      height={0}
+                      alt="remover"
+                    >
+                    </Image>
                   </td>
                 </tr>
-              ) 
+              );
             })}
           </tbody>
         </table>
       </section>
       <Link href="/">
-        <Image onClick={() => clearField()} src="/back.png" width={80} height={50} alt="voltar" />
+        <Image
+          onClick={() => clearField()}
+          src="/back.png"
+          width={80}
+          height={50}
+          alt="voltar"
+        />
       </Link>
     </>
   );
