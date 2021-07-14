@@ -22,7 +22,8 @@ export default function Cities(props: HomeProps) {
 
   const { setGetCityResponse } = ImportContext();
 
-  async function removeItemGrid(cep) {
+  async function removeItemGrid(cep: number) {
+    
     await api.delete(`cities/${cep}`);
     const row = document.getElementsByClassName(`.${cep}`)[0];
     row.remove();
