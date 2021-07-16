@@ -49,7 +49,7 @@ export function CitiesComponent({ states }) {
     const responseFetch = await result.json();
     setGetCityResponse(responseFetch);
   };
- 
+
   const clearField = () => {    
     setGetCityResponse('');
   }
